@@ -1,0 +1,129 @@
+<p>
+    <mat-toolbar style=" background: #4CAF50;">
+        <mat-icon>shopping_cart</mat-icon>
+        <span style="margin-left: 5px;">Dettaglio Articolo</span>
+        <span class="example-spacer"></span>
+        <mat-icon style="text-align: center;">find_in_page</mat-icon>
+     </mat-toolbar> 
+  </p>
+
+<div class="container" *ngIf="isVisible">
+  <div class="container" *ngIf="articolo!=null">
+    <form [formGroup]="artForm">
+        <div class="row">
+            <div class="col-3">
+                <label for="codArt"><h3> Codice </h3></label>
+                <br>
+                <input type="text" id="codArt" formControlName="codArt" [readonly]="true">
+            </div> 
+            <div class="col-3">
+                <label for="descrizione"><h3> Descrizione </h3></label>
+                <br>
+                <input type="text" id="codArt" formControlName="descrizione" [readonly]="true">
+            </div> 
+            <div class="col-3">
+                <label for="um"><h3> Unita' di Misura </h3></label>
+                <br>
+                <input type="text" id="um" formControlName="um" [readonly]="true">
+            </div> 
+            <div class="col-3">
+                <label for="pzCart"><h3> Pezzi Disponibili </h3></label>
+                <br>
+                <input type="text" id="pzCart" formControlName="pzCart" [readonly]="true">
+            </div> 
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-3">
+                <label for="pesoNetto"><h3> Peso Netto </h3></label>
+                <br>
+                <input type="text" id="pesoNetto" formControlName="pesoNetto" [readonly]="true">
+            </div>
+            <div class="col-3">
+                <label for="idStatoArt"><h3> Stato </h3></label>
+                <br>
+                <input type="text" id="idStatoArt" formControlName="idStatoArt" [readonly]="true">
+            </div>
+            <div class="col-3">
+                <label for="dataCreaz"><h3> Data Creazione </h3></label>
+                <br>
+                <input type="text" id="dataCreaz" formControlName="dataCreaz" [readonly]="true">
+            </div>
+            <div class="col-3">
+                <label for="prezzo"><h3> Prezzo </h3></label>
+                <br>
+                <input type="text" id="prezzo" value="{{articolo.prezzo}}"[readonly]="true">
+            </div>
+            
+        </div>
+         
+    </form>
+  </div>
+
+
+
+  <div class="container" *ngIf="iva!=null">
+    <table id="iva" class="table table-striped table-bordered table-hover mt-5">
+        <thead>
+          <tr>
+            <th> Iva </th>
+            <th> Aliquota </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>{{iva.descrizione}}</td>
+              <td class="text-left">{{iva.aliquota}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="container mt-3" *ngIf="famAssort!=null">
+    <table id="famAssort" class="table table-striped table-bordered table-hover mt-5">
+        <thead>
+          <tr>
+            <th> Categoria </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{famAssort.descrizione}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="container mt-3" >
+    <table id="barcode" class="table table-striped table-bordered table-hover mt-5">
+        <thead>
+          <tr>
+            <th> Codice a barre </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{b}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="container mt-3" *ngIf="ingredienti!=null">
+    <table id="ingredienti" class="table table-striped table-bordered table-hover mt-5">
+        <thead>
+          <tr>
+            <th> Codice Ingrediente </th>
+            <th> Info </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ingredienti.codArt}}</td>
+            <td>{{ingredienti.info}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+</div>

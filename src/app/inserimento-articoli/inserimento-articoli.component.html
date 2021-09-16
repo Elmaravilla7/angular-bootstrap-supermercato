@@ -1,0 +1,148 @@
+<p>
+    <mat-toolbar style=" background: #4CAF50;">
+        <mat-icon>shopping_cart</mat-icon>
+        <span style="margin-left: 5px;">Inserimento Articolo</span>
+        <span class="example-spacer"></span>
+        <mat-icon style="text-align: center;">find_in_page</mat-icon>
+     </mat-toolbar> 
+  </p>
+
+  <div class="container">
+
+        
+        <div class="portlet-body form">
+        <form (ngSubmit)="artForm ">
+          <div class="form-body">
+
+            <div class="row col-12">
+              <div class="form-group">
+                <label for="codArt">Codice Articolo:</label>
+                <input name="codArt"  type="text" [(ngModel)]="codArt" class="form-control" placeholder="min 5 max 20 numeri"/>
+              </div>
+            </div>
+
+            <div class="row col-12 mt-3">
+              <div class="form-group">
+                <label for="descrizione">Descrizione Articolo</label>
+                <input name="descrizione" [(ngModel)]="descrizione" type="text" class="form-control"
+                  placeholder="min 6 parole max 80"/>
+                
+              </div>
+              
+            </div>
+
+
+            <div class="row col-12 mt-3">
+              <div class=" col-4">
+                <div class="form-group">
+                  <label for="um">Unità di Misura</label>
+                  <select  name="um" class="form-control" [(ngModel)]="um">
+                    <option value="PZ">Pezzi</option>
+                    <option value="LT">Litri</option>
+                    <option value="KG">Kilogrammi</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class=" col-4">
+                <div class="form-group">
+                  <label for="pesoNetto">Peso Netto:</label>
+                  <input name="pesoNetto" [(ngModel)]="pesoNetto" type="text" class="form-control" placeholder="min 0.01"/>
+                </div>
+              </div>
+
+              <div class=" col-4">
+                <div class="form-group" >
+                  <label for="pzCart">Pezzi:</label>
+                  <input name="pzCart" [(ngModel)]="pzCart" type="text" class="form-control"
+                  required maxlength="2" placeholder="max 99"/>
+                </div>
+              </div> 
+            </div>
+
+            <div class="row col-12 mt-3">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="um">Iva</label>
+                  <select  name="ivaVal" class="form-control" [(ngModel)]="ivaVal">
+                    <option value="0">0</option>
+                    <option value="4">4</option>
+                    <option value="10">10</option>
+                    <option value="22">22</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label >Barcode:</label>
+                <input name="bar" [(ngModel)]="bar" type="text" class="form-control" placeholder="min 8 max 13 numeri"/>
+              </div>
+
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="famiglia">Famiglia Assortimento</label>
+                  <select  name="famiglia" class="form-control" [(ngModel)]="famiglia">
+                    <option value="-1">-1</option>
+                    <option value="1">1</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                    <option value="70">70</option>
+                    <option value="90">90</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row col-12 mt-3">
+              <div class="col-12">
+                <label >Descrizione Ingredienti:</label>
+                <input name="ingrDescr" [(ngModel)]="ingrDescr" type="text" class="form-control"/>
+              </div>
+            </div>
+
+            
+          </div>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+      <div class="col 4">
+
+      </div>
+
+      <div class="col 4">
+        
+        <button type="button" class="btn btn-success" (click)="aggiungi()">Procedi</button>
+
+      </div>
+
+      <div class="col 4">
+
+      </div>
+      
+      
+    </div>
+
+    <div class="container mt-3 " *ngIf="viewErr">
+      <div class="alert alert-danger" role="alert">
+        Errore nei parametri!
+      </div>
+    </div>
+
+    <div class="container mt-3" *ngIf="insOk">
+      <div class="alert alert-success" role="alert">
+        Inserimento ok!
+      </div>
+    </div>
+
+    
+
+    
+    
+  </div>

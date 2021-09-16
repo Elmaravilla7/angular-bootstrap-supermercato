@@ -1,0 +1,82 @@
+
+  <p>
+    <mat-toolbar style=" background: #4CAF50;">
+        <mat-icon>shopping_cart</mat-icon>
+        <span style="margin-left: 5px;">Benvenuto {{ utente }}</span>
+        <span class="example-spacer"></span>
+        <button type="button" class="btn btn-light" (click)="logout()" routerLink="/login" routerLinkActive="active"><mat-icon style="text-align: center;">exit_to_app</mat-icon></button>
+     </mat-toolbar> 
+  </p>
+
+
+  <div class="container">
+    <div class="col-12">
+      <div class="row-col 12 mt-3" *ngIf="okAdmin">
+        <mat-toolbar style="background: #4CAF50;">
+          <mat-icon style="text-align: center;">find_in_page</mat-icon>
+          <span style="margin-left: 5px;">Ricerca per codice articolo</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/listarticoli/1" routerLinkActive="active"><mat-icon style="text-align: center;">add_shopping_cart</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+      <div class="row-col 12 mt-3" *ngIf="okAdmin">
+        <mat-toolbar style=" background: #4CAF50;">
+          <mat-icon style="text-align: center;">find_in_page</mat-icon>
+          <span style="margin-left: 5px;">Ricerca per codice a barre</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/listarticoli/2" routerLinkActive="active"><mat-icon style="text-align: center;">add_shopping_cart</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+      <!--
+      <div class="row-col 12 mt-3" *ngIf="okAdmin">
+        <mat-toolbar style=" background: #4CAF50;">
+          <mat-icon style="text-align: center;">find_in_page</mat-icon>
+          <span style="margin-left: 5px;">Ricerca per descrizione</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/listarticoli/3" routerLinkActive="active"><mat-icon style="text-align: center;">add_shopping_cart</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+      -->
+      <div class="row-col 12 mt-3" *ngIf="!okAdmin">
+        <mat-toolbar style=" background: #4CAF50;">
+          <mat-icon style="text-align: center;">find_in_page</mat-icon>
+          <span style="margin-left: 5px;">Ricerca articoli</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/listarticoli/4" routerLinkActive="active"><mat-icon style="text-align: center;">add_shopping_cart</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+      <div class="row-col 12 mt-3" *ngIf="okAdmin">
+        <mat-toolbar style=" background: #4CAF50;">
+          <mat-icon style="text-align: center;">grade</mat-icon>
+          <span style="margin-left: 5px;">Inserisci/Modifica articolo</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/inserimento/" routerLinkActive="active"><mat-icon style="text-align: center;">subdirectory_arrow_right</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+      <div class="row-col 12 mt-3" *ngIf="okAdmin">
+        <mat-toolbar style=" background: #4CAF50;">
+          <mat-icon style="text-align: center;">delete</mat-icon>
+          <span style="margin-left: 5px;">Rimuovi articolo</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/rimozione/" routerLinkActive="active"><mat-icon style="text-align: center;">remove_shopping_cart</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+      <div class="row-col 12 mt-3" *ngIf="okAdmin">
+        <mat-toolbar style=" background: #4CAF50;">
+          <mat-icon style="text-align: center;">grade</mat-icon>
+          <span style="margin-left: 5px;">Inserisci/Modifica promo articolo</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/inserimentoP/" routerLinkActive="active"><mat-icon style="text-align: center;">subdirectory_arrow_right</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+      <div class="row-col 12 mt-3" *ngIf="okAdmin">
+        <mat-toolbar style=" background: #4CAF50;">
+          <mat-icon style="text-align: center;">delete</mat-icon>
+          <span style="margin-left: 5px;">Rimuovi promo articolo</span>
+          <span class="example-spacer"></span>
+          <button type="button" class="btn btn-light" routerLink="/rimozioneP/" routerLinkActive="active"><mat-icon style="text-align: center;">remove_shopping_cart</mat-icon></button>
+       </mat-toolbar> 
+      </div>
+    </div>
+  </div>
+  

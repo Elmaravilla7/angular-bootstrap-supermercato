@@ -1,0 +1,118 @@
+<p>
+    <mat-toolbar style=" background: #4CAF50;">
+        <mat-icon>shopping_cart</mat-icon>
+        <span style="margin-left: 5px;">{{ nomeRicerca }}</span>
+        <span class="example-spacer"></span>
+        <mat-icon style="text-align: center;">find_in_page</mat-icon>
+     </mat-toolbar>
+</p>
+
+
+<div class="container">
+    <div class="row-col 12">
+        <h2> Filtro {{ nomeRicerca }} </h2>
+    </div>
+    <div class="row-col 12">
+        <form class="example" action="action_page.php">
+            <input type="text" placeholder="Ricerca.." [(ngModel)] = "elemento" name="search">
+            <button type="submit" (click)="ricerca()"><mat-icon>search</mat-icon></button>
+        </form>
+    </div>
+    <table id="articoli" class="table table-striped table-bordered table-hover mt-5">
+      <thead>
+        <tr>
+          <th>CodArt</th>
+          <th>Descrizione</th>
+          <th>Pezzi</th>
+          <th>Prezzo</th>
+          <th *ngIf="dett"></th>
+          <th *ngIf="pay"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let articolo of articoli | paginate: { itemsPerPage: righe, currentPage: pagina }">
+            <td>{{articolo.codArt}}</td>
+            <td class="text-left">{{articolo.descrizione}}</td>
+            <td>{{articolo.pzCart}}</td>
+            <td class="text-right">{{articolo.prezzo | currency:'EUR'}}</td>
+            <td *ngIf="dett">
+              <button type="button" class="btn" routerLink="./dettaglio/{{articolo.codArt}}" routerLinkActive="active" style=" margin:auto; display:block;background: #2196F3;"><mat-icon>launch</mat-icon></button>
+            </td>
+            
+            <td *ngIf="pay && articolo.prezzo>0 && articolo.pzCart>0">
+              <button type="button" class="btn btn-secondary" (click)="addCart(articolo)"style=" margin:auto; display:block;background: #4CAF50;"><mat-icon>add_shopping_cart</mat-icon></button>  
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="clearfix" *ngIf="isVisible">
+      <pagination-controls
+      (pageChange)="pagina = $event"
+      previousLabel="Precedente"
+      nextLabel="Successivo">
+      </pagination-controls>
+    </div>
+    
+    <div class="container" *ngIf="viewErr">
+      <div class="alert alert-danger" role="alert">
+        Articolo non trovato!
+      </div>
+    </div> 
+</div>
+
+
+
+<div class="container mt-5" *ngIf="pay">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carrello"><mat-icon>shopping_cart</mat-icon></button>
+</div>
+
+<div class="container mt-3">
+  <div class="modal fade" id="carrello" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Carrello</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table id="carrello" class="table table-striped table-bordered table-hover mt-5">
+            <thead>
+              <tr>
+                <th>Descrizione Articolo</th>
+                <th>Pezzi</th>
+                <th>Prezzo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let articolo of carrello | paginate: { itemsPerPage: righe, currentPage: pagina }">
+                  <td class="text-left">{{articolo.tipo}}</td>
+                  <td>{{articolo.qt}}</td>
+                  <td class="text-right">{{articolo.prezzo | currency:'EUR'}}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger" (click)="removeP2(articolo)" style=" margin:auto; display:block;"><mat-icon>remove_shopping_cart</mat-icon></button> 
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p> Totale Carrello:<input type="text" [value]="prezzoTotale" [readonly]="true"></p>
+          </div>
+        </div>
+        <div class="modal-footer" *ngIf="prezzoTotale>0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" routerLink="/checkout/{{prezzoTotale}}" routerLinkActive="active"><mat-icon style="text-align: center;">credit_card</mat-icon></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+

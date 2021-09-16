@@ -1,0 +1,67 @@
+<p>
+    <mat-toolbar style=" background: #4CAF50;">
+        <mat-icon>shopping_cart</mat-icon>
+        <span style="margin-left: 5px;">Inserimento Promo Articolo</span>
+        <span class="example-spacer"></span>
+        <mat-icon style="text-align: center;">find_in_page</mat-icon>
+    </mat-toolbar> 
+</p>
+
+<div class="container">
+   
+    
+    <!--Inizio del form di inserimento dati-->
+    
+    <div class="portlet-body form">
+    <form (ngSubmit)="artForm ">
+    <div class="form-body">
+
+        <div class=" col-6 mt-3">
+          <div class="form-group">
+            <label for="codArt">Codice Articolo:</label>
+            <input name="codArt"  type="text" [(ngModel)]="codArt" class="form-control" placeholder="min 5 max 20 numeri"/>
+          </div>
+        </div>
+
+        <div class=" col-6 mt-3">
+            <div class="form-group" >
+              <label for="prezzo">Prezzo :</label>
+              <input name="prezzo" [(ngModel)]="prezzo" type="number" class="form-control"/>
+            </div>
+          </div> 
+        </div>
+
+        <div class=" col-6 mt-3">
+            <div class="form-group" >
+              <label for="sconto">Sconto :</label>
+              <input name="sconto" [(ngModel)]="sconto" type="number" class="form-control"/>
+            </div>
+        </div>
+    </form>
+    <div class="col 4 mt-3">
+        <button type="button" class="btn btn-success" (click)="aggiungi()">Procedi</button>
+    </div>
+
+    <div class="container mt-3" *ngIf="viewErr">
+      <div class="alert alert-danger" role="alert">
+        Errore nei parametri!
+      </div>
+    </div>
+
+    <div class="container mt-3" *ngIf="insOk">
+      <div class="alert alert-success" role="alert">
+        Inserimento ok!
+      </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<p>
+    <mat-toolbar style=" background: #4CAF50;">
+        <mat-icon>shopping_cart</mat-icon>
+        <span style="margin-left: 5px;">Rimozione Promo Articoli</span>
+        <span class="example-spacer"></span>
+        <mat-icon style="text-align: center;">find_in_page</mat-icon>
+     </mat-toolbar> 
+</p>
+
+<div class="container">
+    <div class="row-col 12">
+        <h2> Filtro Rimozione Promo Articoli </h2>
+    </div>
+    <div class="row-col 12">
+        <form class="example" action="action_page.php">
+            <input type="text" placeholder="Inserisci codice Articolo da rimuovere.." [(ngModel)] = "elemento" name="search">
+            <button type="submit" (click)="elimina()"><mat-icon style="text-align: center;">delete</mat-icon></button>
+        </form>
+    </div>
+</div>
+
+<div class="container mt-3" *ngIf="viewErr">
+    <div class="alert alert-danger" role="alert">
+      Errore nei parametri!
+    </div>
+</div>
+
+<div class="container mt-3" *ngIf="rimOk">
+    <div class="alert alert-success" role="alert">
+      Rimozione ok!
+    </div>
+</div>
